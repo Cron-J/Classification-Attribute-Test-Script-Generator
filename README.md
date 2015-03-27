@@ -1,7 +1,7 @@
 Classification - Attribute Test Script Generator
 =================================================
 
-The purpose of this app is to generate the test script/database for Classification - Attribute project for performance testing.
+The purpose of this app is to generate the test script/database for [Classification - Attribute project] (https://github.com/Cron-J/Classification-Attribute) for performance testing.
 
 
 ### Install an app
