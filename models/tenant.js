@@ -1,9 +1,6 @@
 var Mongoose = require('mongoose'),
     db = require('../config/db').db;
-    Schema     = Mongoose.Schema,
-    autoIncrement = require('mongoose-auto-increment');
-    
-    autoIncrement.initialize(db);
+    Schema     = Mongoose.Schema;
 
 /** 
   * @module tenant
@@ -13,7 +10,7 @@ var Mongoose = require('mongoose'),
 
 var tenantSchema = new Schema({
   /** tenant id is indexed */
-  tenantId    : { type: Schema.Types.ObjectId, index: true },  
+  tenantId    : { type: String, required: true, unique: true },  
   /** name must be string and required field */
   name   	    : { type: String, required: true, trim: true },
   /** status must be string and required field */
@@ -25,9 +22,6 @@ var tenantSchema = new Schema({
   /** valid to must be string and required field */
   validTo   	: { type: String, required: true, trim: true  }
 });
-
-
-tenantSchema.plugin(autoIncrement.plugin,{ model: 'tenant', field: 'tenantId' });
 
 var tenant = Mongoose.model('tenant', tenantSchema);
 

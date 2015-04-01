@@ -4,11 +4,8 @@ var mongoose = require('mongoose'),
     Timestamp = require('./timestamp').Timestamp,
     Description = require('./description').Description,
     Type = require('./type').TypeDetails,
-    autoIncrement = require('mongoose-auto-increment'),
-    db = require('../config/db').db,
     AttributeValueOption = require('./attributeValueOption').AttributeValueOption;
 
-    autoIncrement.initialize(db);
 
 /**
   * @module  Attribute
@@ -109,7 +106,6 @@ AttributeSchema.pre('save', function(next){
   next();
 });
 
-AttributeSchema.plugin(autoIncrement.plugin,{ model: 'attribute', field: 'attributeId' });
 
 var attribute = mongoose.model('attribute', AttributeSchema);
 

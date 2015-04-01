@@ -2,11 +2,8 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     validator = require('mongoose-validators'),
     Timestamp = require('./timestamp').Timestamp,
-    autoIncrement = require('mongoose-auto-increment'),
-    db = require('../config/db').db,
     Description = require('./description').Description;
 
-    autoIncrement.initialize(db);
 /**
   * @module  Classification
   * @description contain the details of Classification  
@@ -84,7 +81,6 @@ ClassificationSchema.pre('save', function(next){
   next();
 });
 
-ClassificationSchema.plugin(autoIncrement.plugin,{ model: 'classification', field: 'classificationId' });
 
 var classification = mongoose.model('classification', ClassificationSchema);
 

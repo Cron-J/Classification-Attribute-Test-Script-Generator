@@ -3,11 +3,7 @@ var mongoose = require('mongoose'),
     validator = require('mongoose-validators'),
     classGrp2Attribute = require('./classgrp2Attribute').Classgrp2Attribute,
     Timestamp = require('./timestamp').Timestamp,
-    autoIncrement = require('mongoose-auto-increment'),
-    db = require('../config/db').db,
     Description = require('./description').Description;
-
-    autoIncrement.initialize(db);
 
 /**
   * @module  Classification Group
@@ -94,7 +90,6 @@ ClassificationGroupSchema.pre('save', function(next){
   next();
 });
 
-ClassificationGroupSchema.plugin(autoIncrement.plugin,{ model: 'group', field: 'classificationGroupId' });
 
 var group = mongoose.model('classificationGroup', ClassificationGroupSchema);
 

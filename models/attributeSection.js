@@ -1,8 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     validator = require('mongoose-validators'),
-    autoIncrement = require('mongoose-auto-increment'),
-    db = require('../config/db').db,
     Timestamp = require('./timestamp').Timestamp;
 
 /**
@@ -64,8 +62,6 @@ AttributeSectionSchema.pre('save', function(next){
   }
   next();
 });
-
-AttributeSectionSchema.plugin(autoIncrement.plugin,{ model: 'attributeSection', field: 'attributeSectionId' });
 
 var attributeSection = mongoose.model('attributeSection', AttributeSectionSchema);
 

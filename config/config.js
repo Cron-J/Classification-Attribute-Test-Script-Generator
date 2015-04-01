@@ -9,6 +9,7 @@ module.exports = {
         port: 27017,
         db: 'classification-attribute',
         username: '',
-        password: ''
+        password: '',
+        dbUrl: 'mongodb://gaurav:cronj123@proximus.modulusmongo.net:27017/roqi2hiZ'
     }
 };
