@@ -19,7 +19,7 @@ var ClassificationGroupSchema = new Schema({
   /**
     reference to Classification Collection and should save id of Classification and is the required field.
   */
-  classificationRef: { type:  Schema.ObjectId, ref: 'classification', required: true },
+  classificationRef: { type:  type: String, ref: 'classification', required: true },
 
   /**
     reference to Classification Group Collection and should save id of ClassificationGroup. 
