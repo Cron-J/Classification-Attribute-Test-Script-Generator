@@ -18,7 +18,7 @@ exports.CreateClassification = {
                 .exec(function(err, tenants) {
                     if (!err) {
                         async.eachSeries(tenants, function(file, callback) {
-                            counterValue(function(error, result) {
+                            counterValue(function(result) {
                                 var temp = JSON.parse(JSON.stringify(classification));
                                 temp.classificationId = result;
                                 temp.tenantRef = file._id;
@@ -61,37 +61,15 @@ exports.CreateClassification = {
 }
 
 var counterValue = function(callback) {
-    Counter.update({
-        collectionName: 'classification',
-        fieldName: 'classificationId'
-    }, {
-        $inc: {
-            counterValue: 1
-        }
-    }, function(err, result) {
-        if (err) console.log(err);
-        else {
-            if (result == 0) {
-                counter = new Counter({
-                    'collectionName': 'classification',
-                    'fieldName': 'classificationId',
-                    'counterValue': 0
-                });
-                counter.save(function(err, res) {
-                    var classificationId = "cl" + res.counterValue;
-                    callback(err, classificationId);
-                });
-            } else {
-                Counter.findOne({
-                    collectionName: 'classification',
-                    fieldName: 'classificationId'
-                }, function(err, res) {
-                    if (res) {
-                        var classificationId = "cl" + res.counterValue;
-                        callback(err, classificationId);
-                    }
-                })
-            }
-        }
-    });
+    var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+    var string_length = 20;
+    var randomstring = '';
+    for (var i=0; i<string_length; i++) {
+        var rnum = Math.floor(Math.random() * chars.length);
+        randomstring += chars.substring(rnum,rnum+1);
+    }
+
+    callback(randomstring);
 }
+
+

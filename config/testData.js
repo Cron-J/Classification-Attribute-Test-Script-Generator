@@ -60,6 +60,22 @@ module.exports = {
         description : "Some description" ,
         validFrom   : "20/11/2015 ",
         validTo     : "19/11/2016"
+    },
+    status: [{
+        status : "active"
+    },
+    {
+        status : "error"
+    },
+    {
+        status : "inactive"
+    },
+    {
+        status : "new"
+    },
+    {
+        status : "deleted"
     }
+    ]
 }
     

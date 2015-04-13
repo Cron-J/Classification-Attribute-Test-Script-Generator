@@ -4,11 +4,13 @@ var Attribute = require('./controllers/attribute'),
     AttributeSection = require('./controllers/attributeSection'),
 	Classification = require('./controllers/classification'),
 	ClassificationGroup = require('./controllers/classificationGroup'),
-	Tenant = require('./controllers/tenant');
+	Tenant = require('./controllers/tenant'),
+    Status = require('./controllers/status');
 
 // API Server Endpoints
 exports.endpoints = [
 
+    { method: 'POST', path: '/createStatus', config: Status.CreateStatus },
     { method: 'POST', path: '/createAttributeSection', config: AttributeSection.CreateAttributeSection },
     { method: 'POST', path: '/createAttribute', config: Attribute.CreateAttribute },
     { method: 'POST', path: '/createTenants', config: Tenant.CreateTenantData},

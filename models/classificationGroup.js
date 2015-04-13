@@ -3,11 +3,7 @@ var mongoose = require('mongoose'),
     validator = require('mongoose-validators'),
     classGrp2Attribute = require('./classgrp2Attribute').Classgrp2Attribute,
     Timestamp = require('./timestamp').Timestamp,
-    autoIncrement = require('mongoose-auto-increment'),
-    db = require('../config/db').db,
     Description = require('./description').Description;
-
-    autoIncrement.initialize(db);
 
 /**
   * @module  Classification Group
@@ -19,7 +15,7 @@ var ClassificationGroupSchema = new Schema({
   /**
     reference to Classification Collection and should save id of Classification and is the required field.
   */
-  classificationRef: { type: String, ref: 'classification', required: true },
+  classificationRef: { type:  Schema.ObjectId, ref: 'classification', required: true },
 
   /**
     reference to Classification Group Collection and should save id of ClassificationGroup. 
@@ -30,7 +26,7 @@ var ClassificationGroupSchema = new Schema({
     Classification Group ID. It can only contain alphanumeric characters (letters A-Z, numbers 0-9), hyphens ( - ), underscores ( _ ),
     is the required and unique field and maximum 100 characters.
   */
-  classificationGroupId: { type: String, validate:[ validator.matches(/^[a-zA-Z0-9_-]+$/), validator.isLength(0, 100) ], unique: true, required: true },
+  classificationGroupId: { type: String, validate:[ validator.matches(/^[a-zA-Z0-9_-]+$/), validator.isLength(0, 100) ], required: true },
 
   /**
     Hierarchy Code. It should be string and maximum 100 characters.
@@ -94,7 +90,6 @@ ClassificationGroupSchema.pre('save', function(next){
   next();
 });
 
-ClassificationGroupSchema.plugin(autoIncrement.plugin,{ model: 'group', field: 'classificationGroupId' });
 
 var group = mongoose.model('classificationGroup', ClassificationGroupSchema);
 

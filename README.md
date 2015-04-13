@@ -44,6 +44,8 @@ URL used to generate data:
 
 Need to call api in sequence given below to generate data, as each entry is dependent on previous
 
+POST: /createStatus
+
 POST: /createAttributeSection
 
 POST: /createAttribute
