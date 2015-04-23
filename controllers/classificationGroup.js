@@ -210,7 +210,7 @@ function arrayCreator(i, maxval) {
 
 var counterValue = function(callback) {
     var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-    var string_length = 20;
+    var string_length = 9;
     var randomstring = '';
     for (var i=0; i<string_length; i++) {
         var rnum = Math.floor(Math.random() * chars.length);

@@ -10,6 +10,6 @@ module.exports = {
         db: 'classification-attribute',
         username: '',
         password: '',
-        dbUrl: 'mongodb://gaurav:cronj123@novus.modulusmongo.net:27017/i4wOnupy'
+        dbUrl: 'mongodb://gaurav:cj123@proximus.modulusmongo.net:27017/mUhot6eg'
     }
 };
